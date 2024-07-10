@@ -1,0 +1,22 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "Playwright tests with Docker",
+  "main": "index.js",
+  "engines": {
+    "yarn": ">= 1.6",
+    "node": ">= 18.0"
+  },
+  "scripts": {
+    "test:playwright": "node -r dotenv-safe/config npx playwright test",
+    "test:playwright:report": "node -r dotenv-safe/config npx playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.1",
+    "@types/node": "^20.14.10"
+  },
+  "imports": {
+    "#config": "./playwright.config.js"
+  },
+  "packageManager": "yarn@1.22.22"
+}
