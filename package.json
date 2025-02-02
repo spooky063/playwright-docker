@@ -8,15 +8,16 @@
     "node": ">= 18.0"
   },
   "scripts": {
-    "test:playwright": "node -r dotenv-safe/config npx playwright test",
-    "test:playwright:report": "node -r dotenv-safe/config npx playwright show-report"
+    "test:playwright": "node -r dotenv-safe/config ./node_modules/.bin/playwright test",
+    "test:playwright:report": "node -r dotenv-safe/config ./node_modules/.bin/playwright show-report"
   },
   "devDependencies": {
     "@playwright/test": "^1.45.1",
-    "@types/node": "^20.14.10"
+    "@types/node": "^20.14.10",
+    "dotenv-safe": "^9.1.0"
   },
   "imports": {
     "#config": "./playwright.config.js"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@4.6.0"
 }
