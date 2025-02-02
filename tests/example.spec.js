@@ -1,10 +1,13 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
-const config = require('#config');
-const path = require('path');
+import { test, expect } from '@playwright/test';
+import config from '#config';
+import path from 'path';
 
 test('Demo test Google', async ({ page }) => {
   const snapshotDir = config.snapshotDir;
+  if (snapshotDir === undefined) {
+    throw new Error('Error: check your configuration. The variable snapshotDir is undefined !');
+  }
 
   await page.goto('http://google.com');
   await expect(page).toHaveTitle(/Google/);
