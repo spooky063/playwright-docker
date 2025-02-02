@@ -16,5 +16,5 @@ install:
 
 .PHONY: test
 test:
-	${DOCKER_EXEC} rm -rf var
+	${DOCKER_EXEC} rm -rf var/
 	${DOCKER_EXEC} npm run test:playwright

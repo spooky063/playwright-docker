@@ -1,6 +1,7 @@
 services:
   node:
     image: node:18
+    container_name: playwright_node
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
