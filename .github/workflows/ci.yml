@@ -39,8 +39,10 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
           
       - run: npm ci
+
+      - run: cp .env.example .env
       
-      - run: npx playwright install --with-deps
+      - run: npx playwright install chromium --with-deps
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         
       - run: npx playwright install-deps
