@@ -37,6 +37,7 @@ jobs:
           path: |
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+          retention-days: 10
           
       - run: npm ci
       
