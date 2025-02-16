@@ -28,7 +28,7 @@ jobs:
 
       - name: Get installed Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['node_modules/@playwright/test'].version)")" >> $GITHUB_ENV
         
       - name: Cache playwright binaries
         uses: actions/cache@v3
@@ -39,8 +39,6 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
           
       - run: npm ci
-
-      - run: cp .env.example .env
       
       - run: npx playwright install chromium --with-deps
         if: steps.playwright-cache.outputs.cache-hit != 'true'
@@ -50,7 +48,10 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
-
+        env:
+          PLAYWRIGHT_OUTPUT: "var/playwright"
+          PLAYWRIGHT_SNAPSHOTS: "var/playwright/snapshots"
+          
       - name: Archive results
         uses: actions/upload-artifact@v4
         with:
